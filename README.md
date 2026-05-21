@@ -1,38 +1,84 @@
-# vue-api-draft
+# AlbusVue
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue 3 + Vite application using Ollama for local AI models.
 
-## Recommended IDE Setup
+## Prerequisites
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- [Node.js](https://nodejs.org/) v20.19.0 or >= v22.12.0
+- [Ollama](https://ollama.com/) installed and running locally
 
-## Recommended Browser Setup
+## Setup
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Install dependencies:
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Ollama Commands
 
-```sh
-npm run dev
+| Command | Description |
+|---|---|
+| `ollama serve` | Start the Ollama server |
+| `ollama pull gemma3` | Download the `gemma3` base model |
+| `ollama pull albus` | Download the `albus` model |
+| `ollama create albus -f Modelfile` | Build the `albus` model from the Modelfile |
+| `ollama run albus` | Run the `albus` model interactively |
+| `ollama list` | List all downloaded models |
+
+## App Commands
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server (hot reload) |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build locally |
+
+## Troubleshooting
+
+**Ollama is not installed**
+Download and install it from [https://ollama.com](https://ollama.com), then restart your terminal.
+
+**Ollama server is not running**
+Run `ollama serve` in a separate terminal before starting the app.
+
+**Model `albus` not found**
+`albus` is a custom model built on `gemma3`. Pull the base model and create `albus` from the Modelfile:
+```bash
+ollama pull gemma3
+ollama create albus -f Modelfile
 ```
 
-### Compile and Minify for Production
+**Port 5173 already in use**
+Another process is using the port. Either stop it or run `npm run dev -- --port 5174` to use a different port.
 
-```sh
-npm run build
+**Node is not installed**
+Download and install it from [https://nodejs.org](https://nodejs.org). Choose the LTS version, then restart your terminal and verify with `node -v`.
+
+**npm is not installed**
+npm comes bundled with Node.js. If it's missing, reinstall Node from [https://nodejs.org](https://nodejs.org) and verify with `npm -v`.
+
+**Node version mismatch**
+Check your version with `node -v`. You need v20.19.0 or >= v22.12.0. Use [nvm](https://github.com/nvm-sh/nvm) to install and switch versions:
+```bash
+nvm install 22
+nvm use 22
 ```
+
+**`npm install` fails**
+Delete `node_modules` and `package-lock.json`, then run `npm install` again:
+```bash
+rm -rf node_modules package-lock.json && npm install
+```
+
+**`npm run dev` command not found**
+Dependencies are not installed. Run `npm install` first.
+
+## Getting Started
+
+1. Run `ollama serve` to start the Ollama server
+2. Run `ollama pull gemma3` to download the base model
+3. Run `ollama create albus -f Modelfile` to build the `albus` model
+4. Run `npm install`
+5. Run `npm run dev`
+6. Open [http://localhost:5173](http://localhost:5173) in your browser
