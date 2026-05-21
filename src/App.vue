@@ -1,25 +1,24 @@
 <script setup>
-
-import Header from './Header.vue';
-import Footer from './Footer.vue';
-import HelloWorld from './ChatComponent.vue';
+import ChatComponent from './ChatComponent.vue';
 </script>
 
 <template>
-  <Header></Header>
-  <HelloWorld></HelloWorld>
-  <Footer></Footer>
-
-  
-  
+  <ChatComponent />
 </template>
 
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --dark-color: #0c0116;
-  --violet-color: #5c6bff;
-  --whitey-color: #F8F9FA;
+  --bg: #1a1a1a;
+  --surface: #2b2b2b;
+  --border: #383838;
+  --text: #e8e6e3;
+  --text-muted: #8c8c8c;
+  --violet: #5c6bff;
 }
+
+html, body { height: 100%; background: var(--bg); }
 
 @font-face {
   font-family: 'Space Grotesk';
@@ -47,7 +46,6 @@ import HelloWorld from './ChatComponent.vue';
   font-weight: 700;
 }
 
-* {
-  font-family: 'Space Grotesk', sans-serif;
-}
+* { font-family: 'Space Grotesk', sans-serif; }
 </style>
+
